@@ -1,8 +1,8 @@
 SRC=MD.c control.c util.c 
 OBJ=$(SRC:.c=.o)
 CC=icc
-CFLAGS=  -g -O0 -check=uninit -check-pointers:rw -no-vec
-# CFLAGS=  -g -O0
+# CFLAGS=  -g -O0 -check=uninit -check-pointers:rw -no-vec
+CFLAGS=  -g -O2 -unroll-aggressive
 
 
 all: MD

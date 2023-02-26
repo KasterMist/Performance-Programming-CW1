@@ -1,7 +1,7 @@
 Loading intel-compilers-19/19.0.0.117
   Loading requirement: intel-license gcc/8.2.0 intel-cc-19/19.0.0.117
     intel-fc-19/19.0.0.117
-/var/spool/slurm/job4108030/slurm_script: line 16: cd: C: No such file or directory
+/var/spool/slurm/job4109211/slurm_script: line 16: cd: C: No such file or directory
 timestep 1
 collisions 0
 timestep 2
@@ -202,7 +202,7 @@ timestep 99
 collisions 0
 timestep 100
 collisions 0
-100 timesteps took 24.580182 seconds
+100 timesteps took 24.293391 seconds
 collisions 0
 timestep 1
 collisions 0
@@ -404,22 +404,22 @@ timestep 99
 collisions 8655
 timestep 100
 collisions 8658
-100 timesteps took 24.552191 seconds
+100 timesteps took 24.183602 seconds
 collisions 8661
-200 timesteps took 49.164331 seconds
+200 timesteps took 48.510798 seconds
 
  Performance counter stats for './MD':
 
-   147,833,820,588      cycles                                                      
-   277,584,755,618      instructions              #    1.88  insn per cycle         
-     2,292,856,405      cache-misses                                                
-    35,961,679,052      branches                                                    
-         3,302,203      branch-misses             #    0.01% of all branches        
-               804      page-faults                                                 
+   147,767,139,467      cycles                                                      
+   277,580,235,689      instructions              #    1.88  insn per cycle         
+     2,293,741,976      cache-misses                                                
+    35,960,846,817      branches                                                    
+         3,328,597      branch-misses             #    0.01% of all branches        
+               348      page-faults                                                 
 
-      49.226073718 seconds time elapsed
+      48.773237370 seconds time elapsed
 
-      48.992910000 seconds user
-       0.074793000 seconds sys
+      48.309835000 seconds user
+       0.089690000 seconds sys
 
 

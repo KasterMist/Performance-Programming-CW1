@@ -11,10 +11,11 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --account=m22oc-s2312252
 
-#SBATCH --error=slurm-O2_neg_vec.out
-#SBATCH --output=slurm-O2_neg_vec.out
+#SBATCH --error=slurm-Ofast_gcc.out
+#SBATCH --output=slurm-Ofast_gcc.out
 
 module load intel-compilers-19
+module load gcc/10.2.0
 module load perf
 
 # Switch to current working directory

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Annotated source listing for\/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c</title>
+<style>
+*{margin:0;padding:0}body,html{color:#000;background:#fff;height:100%;width:100%;font-family:"Lucida Sans Unicode","Lucida Grande",sans-serif;overflow:hidden}.header{position:absolute;top:0;height:50px;width:100%;background:#0071c5;color:#fff}.content{position:absolute;left:0;right:0;width:75%;top:50px;bottom:40px;margin:0 auto}.content .inner_header{height:30px;background:#ddd}.content .scrollable_right{position:absolute;left:300px;bottom:0;top:30px;right:0;overflow-y:scroll;padding:3px 5px}.content .scrollable_left{overflow-y:scroll;position:absolute;width:285px;top:30px;bottom:0;padding:3px 5px;border-left:thick solid #ddd}.footer{position:absolute;bottom:0;height:40px;width:100%;background:#0071c5;text-align:center;color:#fff}.header .title{position:relative;padding:7px 5px;left:12.5%;color:#fff;font-size:20px;font-weight:bolder;text-shadow:1px 1px #000}.content .title{padding:3px 5px;color:#0071c5;font-size:14px;font-weight:bolder}.footer .title{padding:10px;font-size:12px}.content .scrollable_left .annot_link{font-size:14px;color:#0071c5}.content .scrollable_left .annot_link:visited {color:purple;text-decoration:underline;}.footnote{color: #0071c5;}</style>
+</head>
+<body>
+<div class="header">
+<div class="title">Annotated source listing with compiler optimization reports</div>
+</div>
+<div class="content">
+<div class="inner_header">
+<div class="title">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c
+</div>
+</div><div class="scrollable_left"><h5 style="color:#032640">Routines with optimization reports</h5><a class="annot_link" href="#l14">evolve(int,&nbsp;double)</a><br/></div><div class="scrollable_right" id="code_layout">
+ <pre style="border-width:0px;"></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.0.117 Build 20180804
+
+Compiler options: -O2 -ipo0 -qopt-report=5 -qopt-report-annotate=html -o MD -lm
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: true
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: true
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: disabled
+  -inline-max-per-compile: disabled
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+</pre>
+<pre style="border-width:0px;"></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+
+Profile feedback used a statically estimated profile for the following routines:
+
+
+  File: /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c
+        evolve(int, double)[Line    14]
+</pre>
+<pre style="border-width:0px;"><a id="l1">1	/*
+</a><a id="l2">2	 *  Simple molecular dynamics code.
+</a><a id="l3">3	 *  2022
+</a><a id="l4">4	 */
+</a><a id="l5">5	#include &lt;stdio.h&gt;
+</a><a id="l6">6	#include &lt;math.h&gt;
+</a><a id="l7">7	#include "coord.h"
+</a><a id="l8">8	
+</a><a id="l9">9	void vis_forces(int N,double *f, double *vis, double *vel);
+</a><a id="l10">10	void add_norms(int N,double *r, double *delta);
+</a><a id="l11">11	double forces(double W, double delta, double r);
+</a><a id="l12">12	void wind_forces(int N,double *f, double *vis, double vel);
+</a><a id="l13">13	
+</a><a id="l14">14	void evolve(int count,double dt){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (evolve(int, double)) [2/8=25.0%] <a class="annot_link" href="MD.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(14,33)</a>
+  -&gt; EXTERN: <a class="annot_link" href="MD.c.annot.html#l23">(23,9)</a> printf(const char *__restrict__, ...)
+  -&gt; EXTERN: <a class="annot_link" href="MD.c.annot.html#l24">(24,9)</a> printf(const char *__restrict__, ...)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l28">(28,11)</a> vis_forces(int, double *, double *, double *) (isz = 17) (sz = 28)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l32">(32,11)</a> wind_forces(int, double *, double *, double) (isz = 17) (sz = 28)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l39">(39,4)</a> add_norms(int, double *, double *) (isz = 21) (sz = 30)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l48">(48,20)</a> forces(double, double, double) (isz = 2) (sz = 13)
+    -&gt; EXTERN: /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c:<a class="annot_link" href="MD.c.annot.html#l26">(26,21)</a> pow(double, double)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l67">(67,4)</a> add_norms(int, double *, double *) (isz = 21) (sz = 30)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l85">(85,20)</a> forces(double, double, double) (isz = 2) (sz = 13)
+    -&gt; EXTERN: /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c:<a class="annot_link" href="MD.c.annot.html#l26">(26,21)</a> pow(double, double)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l87">(87,20)</a> forces(double, double, double) (isz = 2) (sz = 13)
+    -&gt; EXTERN: /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c:<a class="annot_link" href="MD.c.annot.html#l26">(26,21)</a> pow(double, double)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l90">(90,20)</a> forces(double, double, double) (isz = 2) (sz = 13)
+    -&gt; EXTERN: /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c:<a class="annot_link" href="MD.c.annot.html#l26">(26,21)</a> pow(double, double)
+  -&gt; INLINE: <a class="annot_link" href="MD.c.annot.html#l92">(92,20)</a> forces(double, double, double) (isz = 2) (sz = 13)
+    -&gt; EXTERN: /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c:<a class="annot_link" href="MD.c.annot.html#l26">(26,21)</a> pow(double, double)
+
+<a class="annot_link" href="MD.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(14,33)</a>:remark #34051: REGISTER ALLOCATION : [evolve] /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c:14
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   31[ rax rdx rcx rbx rbp rsi rdi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :     632
+            Global    :     167
+            Local     :     465
+        Regenerable   :      19
+        Spilled       :      30
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :     240 bytes*
+            Reads     :      43 [1.85e+04 ~ 0.5%]
+            Writes    :      40 [1.79e+04 ~ 0.5%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l15">15	int step;
+</a><a id="l16">16	int i,j,k,l;
+</a><a id="l17">17	int have_collided;
+</a><a id="l18">18	double size;
+</a><a id="l19">19	/*
+</a><a id="l20">20	 * Loop over timesteps.
+</a><a id="l21">21	 */
+</a><a id="l22">22	      for(step = 1;step&lt;=count;step++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l22">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(22,7)</a>
+   remark #15532: loop was not vectorized: compile time constraints prevent loop optimization. Consider using -O3.
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l23">23	        printf("timestep %d\n",step);
+</a><a id="l24">24	        printf("collisions %d\n",collisions);
+</a><a id="l25">25	
+</a><a id="l26">26	/* set the viscosity term in the force calculation */
+</a><a id="l27">27	        for(j=0;j&lt;Ndim;j++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l27">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(27,9)</a>
+   remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+   remark #25452: Original Order found to be proper, but by a close margin
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l6">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(6,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l28">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(28,11)</a>
+   &lt;Peeled loop for vectorization&gt;
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l6">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(6,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l28">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(28,11)</a>
+      remark #15388: vectorization support: reference f[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l7">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(7,13)</a> ]
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ <a class="annot_link" href="util.c.annot.html#l7">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(7,21)</a> ]
+      remark #15388: vectorization support: reference velo[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l7">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(7,30)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.531
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 1 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 9 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.240 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l6">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(6,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l28">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(28,11)</a>
+   &lt;Alternate Alignment Vectorized Loop&gt;
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l6">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(6,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l28">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(28,11)</a>
+   &lt;Remainder loop for vectorization&gt;
+      remark #15388: vectorization support: reference f[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l7">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(7,13)</a> ]
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ <a class="annot_link" href="util.c.annot.html#l7">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(7,21)</a> ]
+      remark #15389: vectorization support: reference velo[i] has unaligned access   [ <a class="annot_link" href="util.c.annot.html#l7">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(7,30)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 1.067
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 1 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 9 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.240 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l28">28	          vis_forces(Nbody,f[j],vis,velo[j]);
+</a><a id="l29">29	        }
+</a><a id="l30">30	/* add the wind term in the force calculation */
+</a><a id="l31">31	        for(j=0;j&lt;Ndim;j++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l31">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(31,9)</a>
+   remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+   remark #25452: Original Order found to be proper, but by a close margin
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l13">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(13,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l32">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(32,11)</a>
+   &lt;Peeled loop for vectorization&gt;
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l13">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(13,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l32">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(32,11)</a>
+      remark #15388: vectorization support: reference f[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(14,13)</a> ]
+      remark #15388: vectorization support: reference f[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(14,20)</a> ]
+      remark #15388: vectorization support: reference vis[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(14,26)</a> ]
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.500
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 10 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.490 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l13">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(13,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l32">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(32,11)</a>
+   &lt;Alternate Alignment Vectorized Loop&gt;
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l13">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(13,11)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l32">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(32,11)</a>
+   &lt;Remainder loop for vectorization&gt;
+      remark #15388: vectorization support: reference f[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(14,13)</a> ]
+      remark #15388: vectorization support: reference f[i] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(14,20)</a> ]
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ <a class="annot_link" href="util.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(14,26)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 1.000
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 10 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.490 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l32">32	          wind_forces(Nbody,f[j],vis,wind[j]);
+</a><a id="l33">33	        }
+</a><a id="l34">34	/* calculate distance from central mass */
+</a><a id="l35">35	        for(k=0;k&lt;Nbody;k++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l35">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(35,9)</a>
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+<a class="annot_link" href="MD.c.annot.html#l35">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(35,9)</a>:remark #34014: optimization advice for memset: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+<a class="annot_link" href="MD.c.annot.html#l35">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(35,9)</a>:remark #34026: call to memset implemented as a call to optimized library version
+</pre>
+<pre style="border-width:0px;"><a id="l36">36	          r[k] = 0.0;
+</a><a id="l37">37	        }
+</a><a id="l38">38	        for(i=0;i&lt;Ndim;i++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l38">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(38,9)</a>
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l39">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(39,4)</a>
+   &lt;Peeled loop for vectorization&gt;
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l39">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(39,4)</a>
+      remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,11)</a> ]
+      remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,11)</a> ]
+      remark #15388: vectorization support: reference delta[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,20)</a> ]
+      remark #15388: vectorization support: reference delta[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,31)</a> ]
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.438
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.730 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l39">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(39,4)</a>
+   &lt;Alternate Alignment Vectorized Loop&gt;
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l39">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(39,4)</a>
+   &lt;Remainder loop for vectorization&gt;
+      remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,11)</a> ]
+      remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,11)</a> ]
+      remark #15389: vectorization support: reference delta[k] has unaligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,20)</a> ]
+      remark #15389: vectorization support: reference delta[k] has unaligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,31)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.889
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.730 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l39">39		  add_norms(Nbody,r,pos[i]);
+</a><a id="l40">40	        }
+</a><a id="l41">41	        for(k=0;k&lt;Nbody;k++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l41">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(41,9)</a>
+&lt;Peeled loop for vectorization&gt;
+   remark #25015: Estimate of max trip count of loop=1
+LOOP END
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l41">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(41,9)</a>
+   remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l42">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(42,11)</a> ]
+   remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l42">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(42,23)</a> ]
+   remark #15305: vectorization support: vector length 2
+   remark #15399: vectorization support: unroll factor set to 4
+   remark #15309: vectorization support: normalized vectorization overhead 0.074
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 45 
+   remark #15477: vector cost: 17.000 
+   remark #15478: estimated potential speedup: 2.630 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=512
+LOOP END
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l41">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(41,9)</a>
+&lt;Remainder loop for vectorization&gt;
+   remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l42">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(42,11)</a> ]
+   remark #15388: vectorization support: reference r[k] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l42">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(42,23)</a> ]
+   remark #15305: vectorization support: vector length 2
+   remark #15309: vectorization support: normalized vectorization overhead 0.263
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 45 
+   remark #15477: vector cost: 17.000 
+   remark #15478: estimated potential speedup: 2.630 
+   remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l41">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(41,9)</a>
+&lt;Remainder loop for vectorization&gt;
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l42">42	          r[k] = sqrt(r[k]);
+</a><a id="l43">43	        }
+</a><a id="l44">44	       /* calculate central force */
+</a><a id="l45">45	        for(i=0;i&lt;Nbody;i++){
+</a><a id="l46">46		  for(l=0;l&lt;Ndim;l++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l46">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(46,8)</a>
+   remark #25444: Loopnest Interchanged: ( 1 2 ) --&gt; ( 2 1 )
+   remark #15542: loop was not vectorized: inner loop was already vectorized   [ <a class="annot_link" href="MD.c.annot.html#l46">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(46,8)</a> ]
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l45">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(45,9)</a>
+   &lt;Peeled loop for vectorization&gt;
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l45">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(45,9)</a>
+      remark #15389: vectorization support: reference r[i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l48">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(48,57)</a> ]
+      remark #15388: vectorization support: reference f[l][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l47">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(47,17)</a> ]
+      remark #15388: vectorization support: reference f[l][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l47">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(47,27)</a> ]
+      remark #15389: vectorization support: reference mass[i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l48">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(48,29)</a> ]
+      remark #15388: vectorization support: reference pos[l][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l48">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(48,47)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.116
+      remark #15301: PERMUTED LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 48 
+      remark #15477: vector cost: 27.000 
+      remark #15478: estimated potential speedup: 1.770 
+      remark #15486: divides: 1 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l45">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(45,9)</a>
+   &lt;Alternate Alignment Vectorized Loop&gt;
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l45">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(45,9)</a>
+   &lt;Remainder loop for vectorization&gt;
+      remark #15389: vectorization support: reference r[i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l48">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(48,57)</a> ]
+      remark #15388: vectorization support: reference f[l][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l47">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(47,17)</a> ]
+      remark #15388: vectorization support: reference f[l][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l47">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(47,27)</a> ]
+      remark #15389: vectorization support: reference mass[i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l48">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(48,29)</a> ]
+      remark #15389: vectorization support: reference pos[l][i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l48">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(48,47)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.338
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 48 
+      remark #15477: vector cost: 27.000 
+      remark #15478: estimated potential speedup: 1.770 
+      remark #15486: divides: 1 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l45">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(45,9)</a>
+   &lt;Remainder loop for vectorization&gt;
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l47">47	                f[l][i] = f[l][i] - 
+</a><a id="l48">48	                   forces(G*mass[i]*M_central,pos[l][i],r[i]);
+</a><a id="l49">49		  }
+</a><a id="l50">50		}
+</a><a id="l51">51	/* calculate pairwise separation of the particles */
+</a><a id="l52">52	        k = 0;
+</a><a id="l53">53	        for(i=0;i&lt;Nbody;i++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l53">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(53,9)</a>
+   remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+   remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation : ( 1 2 3 ) --&gt; ( 1 3 2 ) 
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l54">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(54,11)</a>
+      remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+      remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation : ( 1 2 ) --&gt; ( 2 1 ) 
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed OUTPUT dependence between delta_pos[l][k] (56:15) and delta_pos[l][k] (56:15)
+      remark #15346: vector dependence: assumed OUTPUT dependence between delta_pos[l][k] (56:15) and delta_pos[l][k] (56:15)
+      remark #25439: unrolled with remainder by 2  
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      remark #25015: Estimate of max trip count of loop=4095
+
+      LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l55">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(55,13)</a>
+         remark #25436: completely unrolled by 3   (pre-vector) 
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l54">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(54,11)</a>
+   &lt;Remainder&gt;
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      remark #25015: Estimate of max trip count of loop=4095
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l54">54	          for(j=i+1;j&lt;Nbody;j++){
+</a><a id="l55">55	            for(l=0;l&lt;Ndim;l++){
+</a><a id="l56">56	              delta_pos[l][k] = pos[l][i] - pos[l][j];
+</a><a id="l57">57	            }
+</a><a id="l58">58	            k = k + 1;
+</a><a id="l59">59	          }
+</a><a id="l60">60	        }
+</a><a id="l61">61	
+</a><a id="l62">62	/* calculate norm of separation vector */
+</a><a id="l63">63	        for(k=0;k&lt;Npair;k++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l63">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(63,9)</a>
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+<a class="annot_link" href="MD.c.annot.html#l63">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(63,9)</a>:remark #34014: optimization advice for memset: increase the destination's alignment to 16 (and use __assume_aligned) to speed up library implementation
+<a class="annot_link" href="MD.c.annot.html#l63">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(63,9)</a>:remark #34026: call to memset implemented as a call to optimized library version
+</pre>
+<pre style="border-width:0px;"><a id="l64">64	          delta_r[k] = 0.0;
+</a><a id="l65">65	        }
+</a><a id="l66">66	        for(i=0;i&lt;Ndim;i++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l66">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(66,9)</a>
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l67">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(67,4)</a>
+   &lt;Peeled loop for vectorization&gt;
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l67">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(67,4)</a>
+      remark #15388: vectorization support: reference delta_r[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,11)</a> ]
+      remark #15388: vectorization support: reference delta_r[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,11)</a> ]
+      remark #15388: vectorization support: reference delta[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,20)</a> ]
+      remark #15388: vectorization support: reference delta[k] has aligned access   [ <a class="annot_link" href="util.c.annot.html#l21">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(21,31)</a> ]
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 1.750
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.740 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=4193280
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l67">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(67,4)</a>
+   &lt;Alternate Alignment Vectorized Loop&gt;
+      remark #25015: Estimate of max trip count of loop=4193280
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="util.c.annot.html#l20">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(20,9)</a> inlined into <a class="annot_link" href="MD.c.annot.html#l67">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(67,4)</a>
+   &lt;Remainder loop for vectorization&gt;
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l67">67		  add_norms(Npair,delta_r,delta_pos[i]);
+</a><a id="l68">68	        }
+</a><a id="l69">69	        for(k=0;k&lt;Npair;k++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l69">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(69,9)</a>
+&lt;Peeled loop for vectorization&gt;
+   remark #25015: Estimate of max trip count of loop=1
+LOOP END
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l69">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(69,9)</a>
+   remark #15388: vectorization support: reference delta_r[k] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l70">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(70,11)</a> ]
+   remark #15388: vectorization support: reference delta_r[k] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l70">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(70,29)</a> ]
+   remark #15305: vectorization support: vector length 2
+   remark #15309: vectorization support: normalized vectorization overhead 0.294
+   remark #15300: LOOP WAS VECTORIZED
+   remark #15442: entire loop may be executed in remainder
+   remark #15448: unmasked aligned unit stride loads: 1 
+   remark #15449: unmasked aligned unit stride stores: 1 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 45 
+   remark #15477: vector cost: 17.000 
+   remark #15478: estimated potential speedup: 2.640 
+   remark #15488: --- end vector cost summary ---
+   remark #25015: Estimate of max trip count of loop=4193280
+LOOP END
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l69">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(69,9)</a>
+&lt;Remainder loop for vectorization&gt;
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l70">70	          delta_r[k] = sqrt(delta_r[k]);
+</a><a id="l71">71	        }
+</a><a id="l72">72	
+</a><a id="l73">73	/*
+</a><a id="l74">74	 * add pairwise forces.
+</a><a id="l75">75	 */
+</a><a id="l76">76	        k = 0;
+</a><a id="l77">77	        for(i=0;i&lt;Nbody;i++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l77">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(77,9)</a>
+   remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+   remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation : ( 1 2 3 ) --&gt; ( 3 2 1 ) 
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l78">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(78,11)</a>
+      remark #25096: Loop Interchange not done due to: Imperfect Loop Nest (Either at Source or due to other Compiler Transformations)
+      remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation : ( 1 2 ) --&gt; ( 2 1 ) 
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed OUTPUT dependence between f[l][i] (84:17) and f[l][j] (91:17)
+      remark #15346: vector dependence: assumed OUTPUT dependence between f[l][j] (91:17) and f[l][i] (84:17)
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+      remark #25015: Estimate of max trip count of loop=4095
+
+      LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l81">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(81,13)</a>
+         remark #25436: completely unrolled by 3   (pre-vector) 
+      LOOP END
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l78">78	          for(j=i+1;j&lt;Nbody;j++){
+</a><a id="l79">79	            size = radius[i] + radius[j];
+</a><a id="l80">80	            have_collided=0;
+</a><a id="l81">81	            for(l=0;l&lt;Ndim;l++){
+</a><a id="l82">82	/*  flip force if close in */
+</a><a id="l83">83	              if( delta_r[k] &gt;= size ){
+</a><a id="l84">84	                f[l][i] = f[l][i] - 
+</a><a id="l85">85	                   forces(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+</a><a id="l86">86	                f[l][j] = f[l][j] + 
+</a><a id="l87">87	                   forces(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+</a><a id="l88">88	              }else{
+</a><a id="l89">89	                f[l][i] = f[l][i] + 
+</a><a id="l90">90	                   forces(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+</a><a id="l91">91	                f[l][j] = f[l][j] - 
+</a><a id="l92">92	                   forces(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+</a><a id="l93">93			have_collided=1;
+</a><a id="l94">94	              }
+</a><a id="l95">95	            }
+</a><a id="l96">96		    if( have_collided == 1 ){
+</a><a id="l97">97		      collisions++;
+</a><a id="l98">98		    }
+</a><a id="l99">99	            k = k + 1;
+</a><a id="l100">100	          }
+</a><a id="l101">101	        }
+</a><a id="l102">102	
+</a><a id="l103">103	/* update positions */
+</a><a id="l104">104	        for(i=0;i&lt;Nbody;i++){
+</a><a id="l105">105	          for(j=0;j&lt;Ndim;j++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l105">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(105,11)</a>
+   remark #25444: Loopnest Interchanged: ( 1 2 ) --&gt; ( 2 1 )
+   remark #15542: loop was not vectorized: inner loop was already vectorized   [ <a class="annot_link" href="MD.c.annot.html#l105">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(105,11)</a> ]
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l104">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(104,9)</a>
+   &lt;Peeled loop for vectorization&gt;
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l104">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(104,9)</a>
+      remark #15388: vectorization support: reference pos[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l106">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(106,13)</a> ]
+      remark #15388: vectorization support: reference pos[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l106">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(106,25)</a> ]
+      remark #15388: vectorization support: reference velo[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l106">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(106,42)</a> ]
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.500
+      remark #15301: PERMUTED LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 10 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.490 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l104">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(104,9)</a>
+   &lt;Alternate Alignment Vectorized Loop&gt;
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l104">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(104,9)</a>
+   &lt;Remainder loop for vectorization&gt;
+      remark #15388: vectorization support: reference pos[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l106">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(106,13)</a> ]
+      remark #15388: vectorization support: reference pos[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l106">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(106,25)</a> ]
+      remark #15389: vectorization support: reference velo[j][i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l106">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(106,42)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.867
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 10 
+      remark #15477: vector cost: 4.000 
+      remark #15478: estimated potential speedup: 2.490 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l106">106	            pos[j][i] = pos[j][i] + dt * velo[j][i];
+</a><a id="l107">107	          }
+</a><a id="l108">108	        }
+</a><a id="l109">109	
+</a><a id="l110">110	/* update velocities */
+</a><a id="l111">111	        for(i=0;i&lt;Nbody;i++){
+</a><a id="l112">112	          for(j=0;j&lt;Ndim;j++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l112">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(112,11)</a>
+   remark #25444: Loopnest Interchanged: ( 1 2 ) --&gt; ( 2 1 )
+   remark #15542: loop was not vectorized: inner loop was already vectorized   [ <a class="annot_link" href="MD.c.annot.html#l112">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(112,11)</a> ]
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l111">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(111,9)</a>
+   &lt;Peeled loop for vectorization&gt;
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l111">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(111,9)</a>
+      remark #15388: vectorization support: reference velo[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,13)</a> ]
+      remark #15388: vectorization support: reference velo[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,26)</a> ]
+      remark #15389: vectorization support: reference f[j][i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,45)</a> ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,53)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15399: vectorization support: unroll factor set to 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.110
+      remark #15301: PERMUTED LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 37 
+      remark #15477: vector cost: 20.500 
+      remark #15478: estimated potential speedup: 1.800 
+      remark #15486: divides: 1 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l111">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(111,9)</a>
+   &lt;Alternate Alignment Vectorized Loop&gt;
+      remark #25015: Estimate of max trip count of loop=512
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l111">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(111,9)</a>
+   &lt;Remainder loop for vectorization&gt;
+      remark #15388: vectorization support: reference velo[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,13)</a> ]
+      remark #15388: vectorization support: reference velo[j][i] has aligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,26)</a> ]
+      remark #15389: vectorization support: reference f[j][i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,45)</a> ]
+      remark #15389: vectorization support: reference mass[i] has unaligned access   [ <a class="annot_link" href="MD.c.annot.html#l113">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(113,53)</a> ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.320
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 2 
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 37 
+      remark #15477: vector cost: 20.500 
+      remark #15478: estimated potential speedup: 1.800 
+      remark #15486: divides: 1 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+
+   LOOP BEGIN at <a class="annot_link" href="MD.c.annot.html#l111">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/MD.c(111,9)</a>
+   &lt;Remainder loop for vectorization&gt;
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l113">113	            velo[j][i] = velo[j][i] + dt * (f[j][i]/mass[i]);
+</a><a id="l114">114	          }
+</a><a id="l115">115	        }
+</a><a id="l116">116	
+</a><a id="l117">117	
+</a><a id="l118">118	      }
+</a><a id="l119">119	
+</a><a id="l120">120	}
+</a><a id="l121">121	
+</a><a id="l122">122	
+</a><a id="l123">123	
+</a><a id="l124">124	
+</a></pre> </div></div>
+<div class="footer">
+<div class="title">Intel Corporation 2015
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Annotated source listing for\/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c</title>
+<style>
+*{margin:0;padding:0}body,html{color:#000;background:#fff;height:100%;width:100%;font-family:"Lucida Sans Unicode","Lucida Grande",sans-serif;overflow:hidden}.header{position:absolute;top:0;height:50px;width:100%;background:#0071c5;color:#fff}.content{position:absolute;left:0;right:0;width:75%;top:50px;bottom:40px;margin:0 auto}.content .inner_header{height:30px;background:#ddd}.content .scrollable_right{position:absolute;left:300px;bottom:0;top:30px;right:0;overflow-y:scroll;padding:3px 5px}.content .scrollable_left{overflow-y:scroll;position:absolute;width:285px;top:30px;bottom:0;padding:3px 5px;border-left:thick solid #ddd}.footer{position:absolute;bottom:0;height:40px;width:100%;background:#0071c5;text-align:center;color:#fff}.header .title{position:relative;padding:7px 5px;left:12.5%;color:#fff;font-size:20px;font-weight:bolder;text-shadow:1px 1px #000}.content .title{padding:3px 5px;color:#0071c5;font-size:14px;font-weight:bolder}.footer .title{padding:10px;font-size:12px}.content .scrollable_left .annot_link{font-size:14px;color:#0071c5}.content .scrollable_left .annot_link:visited {color:purple;text-decoration:underline;}.footnote{color: #0071c5;}</style>
+</head>
+<body>
+<div class="header">
+<div class="title">Annotated source listing with compiler optimization reports</div>
+</div>
+<div class="content">
+<div class="inner_header">
+<div class="title">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c
+</div>
+</div><div class="scrollable_left"><h5 style="color:#032640">Routines with optimization reports</h5><a class="annot_link" href="#l14">main(int,&nbsp;char&nbsp;**)</a><br/><a class="annot_link" href="#l103">second()</a><br/></div><div class="scrollable_right" id="code_layout">
+ <pre style="border-width:0px;"></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.0.117 Build 20180804
+
+Compiler options: -O2 -ipo0 -qopt-report=5 -qopt-report-annotate=html -o MD -lm
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: true
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: true
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: disabled
+  -inline-max-per-compile: disabled
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+</pre>
+<pre style="border-width:0px;"></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+
+Profile feedback used a statically estimated profile for the following routines:
+
+
+  File: /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c
+        main(int, char **) [Line    14]
+</pre>
+<pre style="border-width:0px;"><a id="l1">1	/*
+</a><a id="l2">2	 *
+</a><a id="l3">3	 * Control program for the MD update
+</a><a id="l4">4	 *
+</a><a id="l5">5	 */
+</a><a id="l6">6	#include &lt;stdio.h&gt;
+</a><a id="l7">7	#include &lt;stdlib.h&gt;
+</a><a id="l8">8	#include &lt;sys/time.h&gt;
+</a><a id="l9">9	
+</a><a id="l10">10	#define DECL
+</a><a id="l11">11	#include "coord.h"
+</a><a id="l12">12	
+</a><a id="l13">13	double second(void); 
+</a><a id="l14">14	int main(int argc, char *argv[]){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+INLINE REPORT: (main(int, char **)) [1/8=12.5%] <a class="annot_link" href="control.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(14,33)</a>
+  -&gt; INLINE (MANUAL): <a class="annot_link" href="control.c.annot.html#l28">(28,11)</a> atoi(const char *) (isz = 4) (sz = 11)
+    -&gt; EXTERN: /usr/include/stdlib.h:<a class="annot_link" href="control.c.annot.html#l363">(363,16)</a> strtol(const char *__restrict__, char **__restrict__, int)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l34">(34,7)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l35">(35,13)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l36">(36,10)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l37">(37,12)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l38">(38,9)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l39">(39,10)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l40">(40,12)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l41">(41,13)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l42">(42,18)</a> calloc(size_t, size_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l53">(53,8)</a> fopen(const char *__restrict__, const char *__restrict__)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l56">(56,5)</a> perror(const char *)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l57">(57,5)</a> exit(int)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l61">(61,5)</a> fscanf(FILE *__restrict__, const char *__restrict__, ...)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l66">(66,3)</a> fclose(FILE *)
+  -&gt; INLINE: <a class="annot_link" href="control.c.annot.html#l72">(72,11)</a> second() (isz = 9) (sz = 14)
+    -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l108">(108,13)</a> gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -&gt; INLINE: <a class="annot_link" href="control.c.annot.html#l74">(74,13)</a> second() (isz = 9) (sz = 14)
+    -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l108">(108,13)</a> gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -&gt; <a class="annot_link" href="control.c.annot.html#l75">(75,7)</a> evolve(int, double) (isz = 522) (sz = 529)
+     [[ Inlining would exceed -inline-max-size value (529&gt;230)<a class="footnote" title="xxxxxx The function is larger than the inliner would normally inline.  Use the option -inline-max-size to increase the size of any function that would normally be inlined, add &quot;inline __attribute__((always_inline))&quot; to the declaration of the called function, or add &quot;#pragma forceinline&quot; before the call site.  "> &lt;1&gt;</a>]]
+  -&gt; INLINE: <a class="annot_link" href="control.c.annot.html#l76">(76,12)</a> second() (isz = 9) (sz = 14)
+    -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l108">(108,13)</a> gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l77">(77,7)</a> printf(const char *__restrict__, ...)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l78">(78,7)</a> printf(const char *__restrict__, ...)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l79">(79,7)</a> fflush(FILE *)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l81">(81,7)</a> sprintf(char *__restrict__, const char *__restrict__, ...)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l82">(82,13)</a> fopen(const char *__restrict__, const char *__restrict__)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l85">(85,2)</a> perror(const char *)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l86">(86,2)</a> exit(int)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l90">(90,2)</a> fprintf(FILE *__restrict__, const char *__restrict__, ...)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l95">(95,7)</a> fclose(FILE *)
+  -&gt; INLINE: <a class="annot_link" href="control.c.annot.html#l97">(97,9)</a> second() (isz = 9) (sz = 14)
+    -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l108">(108,13)</a> gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -&gt; EXTERN: <a class="annot_link" href="control.c.annot.html#l98">(98,3)</a> printf(const char *__restrict__, ...)
+
+<a class="annot_link" href="control.c.annot.html#l14">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(14,33)</a>:remark #34051: REGISTER ALLOCATION : [main] /mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c:14
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   22[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm7]
+        
+    Routine temporaries
+        Total         :     186
+            Global    :      59
+            Local     :     127
+        Regenerable   :      73
+        Spilled       :      20
+        
+    Routine stack
+        Variables     :     180 bytes*
+            Reads     :      10 [1.62e+01 ~ 0.0%]
+            Writes    :       2 [2.00e+00 ~ 0.0%]
+        Spills        :     120 bytes*
+            Reads     :      21 [6.83e+04 ~ 20.7%]
+            Writes    :      17 [2.39e+01 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+</pre>
+<pre style="border-width:0px;"><a id="l15">15	  int i,j;
+</a><a id="l16">16	  FILE *in, *out;
+</a><a id="l17">17	  double tstart,tstop;
+</a><a id="l18">18	  double start,stop;
+</a><a id="l19">19	  char name[80];
+</a><a id="l20">20	  /*  timestep value */
+</a><a id="l21">21	  double dt=0.02;
+</a><a id="l22">22	
+</a><a id="l23">23	  /*  number of timesteps to use. */
+</a><a id="l24">24	  int Nstep=100;
+</a><a id="l25">25	  int Nsave=2;
+</a><a id="l26">26	  
+</a><a id="l27">27	  if( argc &gt; 1 ){
+</a><a id="l28">28	    Nstep=atoi(argv[1]);
+</a><a id="l29">29	  }
+</a><a id="l30">30	  wind[Xcoord] = 0.9;
+</a><a id="l31">31	  wind[Ycoord] = 0.4;
+</a><a id="l32">32	  wind[Zcoord] = 0.0;
+</a><a id="l33">33	  /* set up multi dimensional arrays */
+</a><a id="l34">34	  r = calloc(Nbody,sizeof(double));
+</a><a id="l35">35	  delta_r = calloc(Nbody*Nbody,sizeof(double));
+</a><a id="l36">36	  mass = calloc(Nbody,sizeof(double));
+</a><a id="l37">37	  radius = calloc(Nbody,sizeof(double));
+</a><a id="l38">38	  vis = calloc(Nbody,sizeof(double));
+</a><a id="l39">39	  f[0] = calloc(Ndim*Nbody,sizeof(double));
+</a><a id="l40">40	  pos[0] = calloc(Ndim*Nbody,sizeof(double));
+</a><a id="l41">41	  velo[0] = calloc(Ndim*Nbody,sizeof(double));
+</a><a id="l42">42	  delta_pos[0] = calloc(Ndim*Nbody*Nbody,sizeof(double));
+</a><a id="l43">43	  for(i=1;i&lt;Ndim;i++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="control.c.annot.html#l43">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(43,3)</a>
+   remark #15389: vectorization support: reference f[i] has unaligned access   [ <a class="annot_link" href="control.c.annot.html#l44">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(44,5)</a> ]
+   remark #15389: vectorization support: reference pos[i] has unaligned access   [ <a class="annot_link" href="control.c.annot.html#l45">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(45,5)</a> ]
+   remark #15389: vectorization support: reference velo[i] has unaligned access   [ <a class="annot_link" href="control.c.annot.html#l46">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(46,5)</a> ]
+   remark #15389: vectorization support: reference delta_pos[i] has unaligned access   [ <a class="annot_link" href="control.c.annot.html#l47">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(47,5)</a> ]
+   remark #15381: vectorization support: unaligned access used inside loop body
+   remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   remark #15305: vectorization support: vector length 2
+   remark #15427: loop was completely unrolled
+   remark #15309: vectorization support: normalized vectorization overhead 0.167
+   remark #15451: unmasked unaligned unit stride stores: 4 
+   remark #15475: --- begin vector cost summary ---
+   remark #15476: scalar cost: 18 
+   remark #15477: vector cost: 24.000 
+   remark #15478: estimated potential speedup: 0.640 
+   remark #15487: type converts: 4 
+   remark #15488: --- end vector cost summary ---
+   remark #25436: completely unrolled by 2  
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l44">44	    f[i] = f[0] + i * Nbody;
+</a><a id="l45">45	    pos[i] = pos[0] + i * Nbody;
+</a><a id="l46">46	    velo[i] = velo[0] + i * Nbody;
+</a><a id="l47">47	    delta_pos[i] = delta_pos[0] + i*Nbody*Nbody;
+</a><a id="l48">48	  }
+</a><a id="l49">49	
+</a><a id="l50">50	/* read the initial data from a file */
+</a><a id="l51">51	
+</a><a id="l52">52	  collisions=0;
+</a><a id="l53">53	  in = fopen("input.dat","r");
+</a><a id="l54">54	
+</a><a id="l55">55	  if( ! in ){
+</a><a id="l56">56	    perror("input.dat");
+</a><a id="l57">57	    exit(1);
+</a><a id="l58">58	  }
+</a><a id="l59">59	
+</a><a id="l60">60	  for(i=0;i&lt;Nbody;i++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="control.c.annot.html#l60">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(60,3)</a>
+   remark #15527: loop was not vectorized: function call to fscanf(FILE *__restrict__, const char *__restrict__, ...) cannot be vectorized   [ <a class="annot_link" href="control.c.annot.html#l61">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(61,5)</a> ]
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l61">61	    fscanf(in,"%16le%16le%16le%16le%16le%16le%16le%16le%16le\n",
+</a><a id="l62">62	      mass+i,radius+i,vis+i,
+</a><a id="l63">63	      &pos[Xcoord][i], &pos[Ycoord][i], &pos[Zcoord][i],
+</a><a id="l64">64	      &velo[Xcoord][i], &velo[Ycoord][i], &velo[Zcoord][i]);
+</a><a id="l65">65	  }
+</a><a id="l66">66	  fclose(in);
+</a><a id="l67">67	
+</a><a id="l68">68	/*
+</a><a id="l69">69	 * Run Nstep timesteps and time how long it took
+</a><a id="l70">70	 */
+</a><a id="l71">71	 
+</a><a id="l72">72	   tstart=second();
+</a><a id="l73">73	   for(j=1;j&lt;=Nsave;j++){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+
+LOOP BEGIN at <a class="annot_link" href="control.c.annot.html#l73">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(73,4)</a>
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at <a class="annot_link" href="control.c.annot.html#l89">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(89,7)</a>
+      remark #15527: loop was not vectorized: function call to fprintf(FILE *__restrict__, const char *__restrict__, ...) cannot be vectorized   [ <a class="annot_link" href="control.c.annot.html#l90">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(90,2)</a> ]
+   LOOP END
+LOOP END
+</pre>
+<pre style="border-width:0px;"><a id="l74">74	      start=second();
+</a><a id="l75">75	      evolve(Nstep,dt); 
+</a><a id="l76">76	      stop=second();
+</a><a id="l77">77	      printf("%d timesteps took %f seconds\n",Nstep,stop-start);
+</a><a id="l78">78	      printf("collisions %d\n",collisions);
+</a><a id="l79">79	      fflush(stdout);
+</a><a id="l80">80	/* write final result to a file */
+</a><a id="l81">81	      sprintf(name,"output.dat%03d",j*Nstep);
+</a><a id="l82">82	      out = fopen(name,"w");
+</a><a id="l83">83	
+</a><a id="l84">84	      if( ! out ){
+</a><a id="l85">85		perror(name);
+</a><a id="l86">86		exit(1);
+</a><a id="l87">87	      }
+</a><a id="l88">88	
+</a><a id="l89">89	      for(i=0;i&lt;Nbody;i++){
+</a><a id="l90">90		fprintf(out,"%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E\n",
+</a><a id="l91">91			mass[i],radius[i],vis[i],
+</a><a id="l92">92			pos[Xcoord][i], pos[Ycoord][i], pos[Zcoord][i],
+</a><a id="l93">93			velo[Xcoord][i], velo[Ycoord][i], velo[Zcoord][i]);
+</a><a id="l94">94	      }
+</a><a id="l95">95	      fclose(out);
+</a><a id="l96">96	  }
+</a><a id="l97">97	  tstop=second();
+</a><a id="l98">98	  printf("%d timesteps took %f seconds\n",Nsave*Nstep,tstop-tstart);
+</a><a id="l99">99	
+</a><a id="l100">100	}
+</a><a id="l101">101	
+</a><a id="l102">102	double second()
+</a><a id="l103">103	{
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+DEAD STATIC FUNCTION: (second()) <a class="annot_link" href="control.c.annot.html#l103">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/control.c(103,1)</a>
+
+</pre>
+<pre style="border-width:0px;"><a id="l104">104	        struct timeval tp;
+</a><a id="l105">105	        struct timezone tzp;
+</a><a id="l106">106	        int i;
+</a><a id="l107">107	
+</a><a id="l108">108	        i = gettimeofday(&tp,&tzp);
+</a><a id="l109">109	        return ( (double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
+</a><a id="l110">110	}
+</a><a id="l111">111	
+</a></pre> </div></div>
+<div class="footer">
+<div class="title">Intel Corporation 2015
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Annotated source listing for\/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c</title>
+<style>
+*{margin:0;padding:0}body,html{color:#000;background:#fff;height:100%;width:100%;font-family:"Lucida Sans Unicode","Lucida Grande",sans-serif;overflow:hidden}.header{position:absolute;top:0;height:50px;width:100%;background:#0071c5;color:#fff}.content{position:absolute;left:0;right:0;width:75%;top:50px;bottom:40px;margin:0 auto}.content .inner_header{height:30px;background:#ddd}.content .scrollable_right{position:absolute;left:300px;bottom:0;top:30px;right:0;overflow-y:scroll;padding:3px 5px}.content .scrollable_left{overflow-y:scroll;position:absolute;width:285px;top:30px;bottom:0;padding:3px 5px;border-left:thick solid #ddd}.footer{position:absolute;bottom:0;height:40px;width:100%;background:#0071c5;text-align:center;color:#fff}.header .title{position:relative;padding:7px 5px;left:12.5%;color:#fff;font-size:20px;font-weight:bolder;text-shadow:1px 1px #000}.content .title{padding:3px 5px;color:#0071c5;font-size:14px;font-weight:bolder}.footer .title{padding:10px;font-size:12px}.content .scrollable_left .annot_link{font-size:14px;color:#0071c5}.content .scrollable_left .annot_link:visited {color:purple;text-decoration:underline;}.footnote{color: #0071c5;}</style>
+</head>
+<body>
+<div class="header">
+<div class="title">Annotated source listing with compiler optimization reports</div>
+</div>
+<div class="content">
+<div class="inner_header">
+<div class="title">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c
+</div>
+</div><div class="scrollable_left"><h5 style="color:#032640">Routines with optimization reports</h5><a class="annot_link" href="#l4">vis_forces(int,&nbsp;double&nbsp;*,&nbsp;double&nbsp;*,&nbsp;double&nbsp;*)</a><br/><a class="annot_link" href="#l18">add_norms(int,&nbsp;double&nbsp;*,&nbsp;double&nbsp;*)</a><br/><a class="annot_link" href="#l25">forces(double,&nbsp;double,&nbsp;double)</a><br/><a class="annot_link" href="#l11">wind_forces(int,&nbsp;double&nbsp;*,&nbsp;double&nbsp;*,&nbsp;double)</a><br/></div><div class="scrollable_right" id="code_layout">
+ <pre style="border-width:0px;"></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.0.117 Build 20180804
+
+Compiler options: -O2 -ipo0 -qopt-report=5 -qopt-report-annotate=html -o MD -lm
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: true
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: true
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: disabled
+  -inline-max-per-compile: disabled
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+</pre>
+<pre style="border-width:0px;"><a id="l1">1	#include &lt;math.h&gt;
+</a><a id="l2">2	
+</a><a id="l3">3	void vis_forces(int N,double *f, double *vis, double *velo)
+</a><a id="l4">4	{
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+DEAD STATIC FUNCTION: (vis_forces(int, double *, double *, double *)) <a class="annot_link" href="util.c.annot.html#l4">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(4,1)</a>
+
+</pre>
+<pre style="border-width:0px;"><a id="l5">5	  int i;
+</a><a id="l6">6	          for(i=0;i&lt;N;i++){
+</a><a id="l7">7	            f[i] = -vis[i] * velo[i];
+</a><a id="l8">8	          }
+</a><a id="l9">9	}
+</a><a id="l10">10	void wind_forces(int N,double *f, double *vis, double velo)
+</a><a id="l11">11	{
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+DEAD STATIC FUNCTION: (wind_forces(int, double *, double *, double)) <a class="annot_link" href="util.c.annot.html#l11">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(11,1)</a>
+
+</pre>
+<pre style="border-width:0px;"><a id="l12">12	  int i;
+</a><a id="l13">13	          for(i=0;i&lt;N;i++){
+</a><a id="l14">14	            f[i] = f[i] -vis[i] * velo;
+</a><a id="l15">15	          }
+</a><a id="l16">16	}
+</a><a id="l17">17	void add_norms(int N,double *r, double *delta)
+</a><a id="l18">18	{
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+DEAD STATIC FUNCTION: (add_norms(int, double *, double *)) <a class="annot_link" href="util.c.annot.html#l18">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(18,1)</a>
+
+</pre>
+<pre style="border-width:0px;"><a id="l19">19	  int k;
+</a><a id="l20">20	        for(k=0;k&lt;N;k++){
+</a><a id="l21">21	          r[k] += (delta[k] * delta[k]);
+</a><a id="l22">22	        }
+</a><a id="l23">23	}
+</a><a id="l24">24	
+</a><a id="l25">25	double forces(double Wv, double deltav, double rv){
+</a></pre><pre style="display:inline-block;padding:5px;margin-right:3px;font-color:#AEAEAEk;font-size:11px;border-radius:12px;border:1px solid #dddddd; background:#fbfbfb">
+DEAD STATIC FUNCTION: (forces(double, double, double)) <a class="annot_link" href="util.c.annot.html#l25">/mnt/lustre/indy2lfs/work/m22oc/m22oc/s2312252/PP/Performance-Programming-CW1/MD/C/util.c(25,51)</a>
+
+</pre>
+<pre style="border-width:0px;"><a id="l26">26	  return Wv*deltav/(pow(rv,3.0));
+</a><a id="l27">27	}
+</a><a id="l28">28	
+</a><a id="l29">29	
+</a><a id="l30">30	
+</a></pre> </div></div>
+<div class="footer">
+<div class="title">Intel Corporation 2015
+</div>
+</div>
+</body>
+</html>
